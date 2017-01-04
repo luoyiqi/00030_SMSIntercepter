@@ -13,18 +13,18 @@ ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE
 ```
 ```java
  @Override
-    public void onReceive(Context context, Intent intent) {
+ public void onReceive(Context context, Intent intent) {
         // 解析短信
-        Bundle extras = intent.getExtras();
-        Object[] pdus = (Object[]) extras.get("pdus");
-        for (Object pdu : pdus) {
-            SmsMessage message = SmsMessage.createFromPdu((byte[]) pdu);
-            System.out.println(message.getOriginatingAddress());
-            System.out.println(message.getMessageBody());
-        }
-        // 中断短信广播
-        abortBroadcast();
-    }
+     Bundle extras = intent.getExtras();
+     Object[] pdus = (Object[]) extras.get("pdus");
+     for (Object pdu : pdus) {
+         SmsMessage message = SmsMessage.createFromPdu((byte[]) pdu);
+         System.out.println(message.getOriginatingAddress());
+         System.out.println(message.getMessageBody());
+     }
+     // 中断短信广播
+     abortBroadcast();
+ }
 ```
 
 ### 效果图
